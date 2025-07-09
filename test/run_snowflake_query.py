@@ -2,13 +2,13 @@ import snowflake.connector
 import os
 
 conn = snowflake.connector.connect(
-    user=os.environ['NATE_NORTON'],
-    password=os.environ['Twinkie6369639!'],
-    account=os.environ['MYXCCRC-UJA24426.snowflakecomputing.com'],
-    warehouse=os.environ['REPORTING_WAREHOUSE'],
-    database=os.environ['ANALYTICS'],
-    schema=os.environ['ANALYTICS_QUALITY'],
-    role=os.environ['QC_ROLE']
+    user=os.environ['SNOWFLAKE_USER'],
+    password=os.environ['SNOWFLAKE_PASSWORD'],
+    account=os.environ['SNOWFLAKE_ACCOUNT'],
+    warehouse=os.environ['SNOWFLAKE_WAREHOUSE'],
+    database=os.environ['SNOWFLAKE_DATABASE'],
+    schema=os.environ['SNOWFLAKE_SCHEMA'],
+    role=os.environ['SNOWFLAKE_ROLE']
 )
 
 cs = conn.cursor()
