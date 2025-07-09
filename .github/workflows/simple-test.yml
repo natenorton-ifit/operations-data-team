@@ -1,4 +1,4 @@
-name: Python Test
+name: Snowflake Connection Test
 
 on:
   workflow_dispatch:
@@ -7,16 +7,20 @@ on:
       - main
 
 jobs:
-  python-job:
+  snowflake-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Run Python script
-        run: python hello.py
+      - run: pip install snowflake-connector-python
+
+      - name: Run Snowflake test script
+        env:
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+        run: python test_snowflake.py
