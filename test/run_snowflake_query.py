@@ -1,6 +1,8 @@
 import snowflake.connector
 import os
 
+print("Account value:", os.environ['SNOWFLAKE_ACCOUNT'])  # Add this
+
 conn = snowflake.connector.connect(
     user=os.environ['SNOWFLAKE_USER'],
     password=os.environ['SNOWFLAKE_PASSWORD'],
