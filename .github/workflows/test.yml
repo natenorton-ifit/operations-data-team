@@ -21,6 +21,11 @@ jobs:
       - name: Install Snowflake Connector
         run: pip install snowflake-connector-python
 
+      - name: Print Snowflake Account Secret
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+        run: echo "SNOWFLAKE_ACCOUNT=$SNOWFLAKE_ACCOUNT"
+
       - name: Run Snowflake Test
         env:
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
